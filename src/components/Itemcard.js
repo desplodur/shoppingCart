@@ -1,32 +1,26 @@
 import { useState } from "react";
 
-function Itemcard({ itemTitle, itemPrice, setTotalValueProp }) {
-  const [totalAmount, setTotalAmount] = useState(0);
-
+function Itemcard({ itemTitle, itemPrice, itemAmount, setFruitObject }) {
   return (
     <div className="itemCard">
       <h2>{itemTitle}</h2>
       <p>{itemPrice} per piece</p>
       <button
         onClick={() => {
-          setTotalAmount(totalAmount + 1);
-          setTotalValueProp(totalAmount * itemPrice);
-
-          console.log(totalAmount);
+          setFruitObject(itemAmount + 1);
         }}
       >
         +
       </button>
       <button
         onClick={() => {
-          setTotalAmount(totalAmount - 1);
-          setTotalValueProp(totalAmount * itemPrice);
+          setFruitObject(itemAmount - 1);
         }}
       >
         -
       </button>
-      <p>amount: {totalAmount}</p>
-      <p>total: {itemPrice * totalAmount}</p>
+      <p>amount: {itemAmount}</p>
+      <p>total: {itemPrice * itemAmount}</p>
     </div>
   );
 }
