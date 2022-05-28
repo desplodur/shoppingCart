@@ -1,0 +1,25 @@
+h2 {
+  padding: 0.8em 0 0 0;
+}
+.itemCard {
+  border: 2px solid aliceblue;
+  border-radius: 25px;
+  margin: 2em 0 2em 0;
+  width: 40%;
+  text-align: center;
+  position: relative;
+}
+.deleteFruitButton {
+  position: absolute;
+  right: 0px;
+  border: none;
+  background-color: aliceblue;
+  border-radius: 0 20px 0 0;
+  font-size: 1.2rem;
+  padding: 0.3em;
+}
+
+.deleteFruitButton:hover {
+  background-color: #282c34;
+  color: whitesmoke;
+}
