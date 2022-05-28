@@ -1,23 +1,47 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import { useState } from "react";
+import "./App.css";
+import Itemcard from "./components/Itemcard";
 
 function App() {
+  //Durch objects ersetzen!!
+  //Dann kann ich die value einfach * den preis nehmen
+
+  const [totalValue, setTotalValue] = useState([0, 0, 0]);
+
+  function setTotalValueFunction(index, newTotalValue) {
+    const newTotalValueArray = [...totalValue];
+    newTotalValueArray[index] = newTotalValue;
+    setTotalValue(newTotalValueArray);
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Total Price: {totalValue.reduce((a, b) => a + b)}</h1>
+      <Itemcard
+        itemTitle={"Bananas"}
+        itemPrice={0.5}
+        itemValue={totalValue[0]}
+        setTotalValueProp={(newTotalValue) => {
+          setTotalValueFunction(0, newTotalValue);
+        }}
+      />
+      <Itemcard
+        itemTitle={"Apples"}
+        itemPrice={0.6}
+        itemValue={totalValue[1]}
+        setTotalValueProp={(newTotalValue) => {
+          setTotalValueFunction(1, newTotalValue);
+        }}
+      />
+      <Itemcard
+        itemTitle={"Avocados"}
+        itemPrice={1.9}
+        itemValue={totalValue[2]}
+        setTotalValueProp={(newTotalValue) => {
+          setTotalValueFunction(2, newTotalValue);
+        }}
+      />
     </div>
   );
 }
