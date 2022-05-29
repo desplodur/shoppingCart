@@ -40,16 +40,17 @@ function App() {
     setFruitObject(newFruitsArray);
   }
 
-  function createFruit(name, price) {
+  const createFruit = (event) => {
+    event.preventDefault();
     const newFruitObject = {
-      name: name,
-      price: price,
+      name: event.target.fruitName.value,
+      price: event.target.fruitPrice.value,
       amount: 0,
       totalValue: 0,
     };
     const newFruitsArray = [...fruits, newFruitObject];
     setFruitObject(newFruitsArray);
-  }
+  };
 
   const sumAll = fruits
     .map((item) => item.totalValue)
@@ -59,14 +60,22 @@ function App() {
     <>
       <div className="head">
         <h1>Total Price: {sumAll} €</h1>
-        <h2> Money left to spend: {30 - sumAll} €</h2>
-        <button
-          onClick={() => {
-            createFruit("test", 0.7);
-          }}
-        >
-          Create Fruit
-        </button>
+        <p> Money left to spend: {30 - sumAll} €</p>
+        <form onSubmit={createFruit}>
+          <input
+            type="text"
+            name="fruitName"
+            placeholder="Fruit name"
+            required
+          ></input>
+          <input
+            type="text"
+            name="fruitPrice"
+            placeholder="0.5"
+            required
+          ></input>
+          <button type="submit">Create a new Item</button>
+        </form>
       </div>
       <div className="body">
         {fruits.map((fruit, index) => {
