@@ -1,8 +1,21 @@
-import { useState } from "react";
+import React from "react";
 
-function Form(createFruit) {
+function Form({ fruitsArray, setFruitObject }) {
+  const createFruit = (event) => {
+    console.log("works");
+    event.preventDefault();
+    const newFruitObject = {
+      name: event.target.fruitName.value,
+      price: event.target.fruitPrice.value,
+      amount: 0,
+      totalValue: 0,
+    };
+    const newFruitsArray = [...fruitsArray, newFruitObject];
+    setFruitObject(newFruitsArray);
+  };
+
   return (
-    <form>
+    <form onSubmit={createFruit}>
       <input
         type="text"
         name="fruitName"

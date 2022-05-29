@@ -1,7 +1,7 @@
-import logo from "./logo.svg";
 import { useState } from "react";
 import "./App.css";
 import Itemcard from "./components/Itemcard";
+import Form from "./components/Form";
 
 function App() {
   //Durch objects ersetzen!!
@@ -40,18 +40,6 @@ function App() {
     setFruitObject(newFruitsArray);
   }
 
-  const createFruit = (event) => {
-    event.preventDefault();
-    const newFruitObject = {
-      name: event.target.fruitName.value,
-      price: event.target.fruitPrice.value,
-      amount: 0,
-      totalValue: 0,
-    };
-    const newFruitsArray = [...fruits, newFruitObject];
-    setFruitObject(newFruitsArray);
-  };
-
   const sumAll = fruits
     .map((item) => item.totalValue)
     .reduce((prev, curr) => prev + curr, 0);
@@ -61,21 +49,7 @@ function App() {
       <div className="head">
         <h1>Total Price: {sumAll} €</h1>
         <p> Money left to spend: {30 - sumAll} €</p>
-        <form onSubmit={createFruit}>
-          <input
-            type="text"
-            name="fruitName"
-            placeholder="Fruit name"
-            required
-          ></input>
-          <input
-            type="text"
-            name="fruitPrice"
-            placeholder="0.5"
-            required
-          ></input>
-          <button type="submit">Create a new Item</button>
-        </form>
+        <Form fruitsArray={fruits} setFruitObject={setFruitObject} />
       </div>
       <div className="body">
         {fruits.map((fruit, index) => {
