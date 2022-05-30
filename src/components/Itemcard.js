@@ -1,32 +1,47 @@
-import { useState } from "react";
+import "./itemCard.css";
 
-function Itemcard({ itemTitle, itemPrice, setTotalValueProp }) {
-  const [totalAmount, setTotalAmount] = useState(0);
-
+function Itemcard({
+  sum,
+  itemTitle,
+  itemPrice,
+  itemAmount,
+  setFruitObject,
+  deleteFruit,
+}) {
   return (
     <div className="itemCard">
-      <h2>{itemTitle}</h2>
-      <p>{itemPrice} per piece</p>
       <button
         onClick={() => {
-          setTotalAmount(totalAmount + 1);
-          setTotalValueProp(totalAmount * itemPrice);
-
-          console.log(totalAmount);
+          deleteFruit();
+        }}
+        className="deleteFruitButton"
+      >
+        X
+      </button>
+      <h2>{itemTitle}</h2>
+      <p>{itemPrice} € per piece</p>
+      <button
+        className="itemCard__amountButton"
+        onClick={() => {
+          sum <= 30 - itemPrice
+            ? setFruitObject(itemAmount + 1)
+            : alert("Not enough money!");
         }}
       >
         +
       </button>
       <button
+        className="itemCard__amountButton"
         onClick={() => {
-          setTotalAmount(totalAmount - 1);
-          setTotalValueProp(totalAmount * itemPrice);
+          sum >= 0 + itemPrice
+            ? setFruitObject(itemAmount - 1)
+            : alert("You can´t sell anything here!");
         }}
       >
         -
       </button>
-      <p>amount: {totalAmount}</p>
-      <p>total: {itemPrice * totalAmount}</p>
+      <p>amount: {itemAmount}</p>
+      <p>total: {itemPrice * itemAmount} €</p>
     </div>
   );
 }
