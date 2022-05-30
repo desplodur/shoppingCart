@@ -1,0 +1,23 @@
+.form__inputFieldWrapper {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.form__inputField {
+  background-color: #282c34;
+  color: white;
+  border: none;
+  margin: 0 auto;
+  padding: 0 2em 0 2em;
+  height: 3em;
+}
+
+.form__submitButton {
+  border: none;
+  background-color: #282c34;
+  color: aliceblue;
+  margin: 2em 0 2em 0;
+  padding: 0 1em 0 1em;
+  border-radius: 25px;
+  height: 3em;
+}

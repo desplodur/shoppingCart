@@ -1,4 +1,3 @@
-import { useState } from "react";
 import "./itemCard.css";
 
 function Itemcard({
@@ -22,6 +21,7 @@ function Itemcard({
       <h2>{itemTitle}</h2>
       <p>{itemPrice} € per piece</p>
       <button
+        className="itemCard__amountButton"
         onClick={() => {
           sum <= 30 - itemPrice
             ? setFruitObject(itemAmount + 1)
@@ -31,6 +31,7 @@ function Itemcard({
         +
       </button>
       <button
+        className="itemCard__amountButton"
         onClick={() => {
           sum >= 0 + itemPrice
             ? setFruitObject(itemAmount - 1)
